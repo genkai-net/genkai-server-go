@@ -19,6 +19,7 @@ func (k *Kai) GinHandler(g *gin.Context) {
 	ctx := &Context{
 		Session: g.GetHeader("genkai-session"),
 		Request: payload,
+		Ctx:     g,
 	}
 
 	resultPayload, err := k.Execute(ctx)
@@ -28,4 +29,3 @@ func (k *Kai) GinHandler(g *gin.Context) {
 
 	g.JSON(200, resultPayload)
 }
-

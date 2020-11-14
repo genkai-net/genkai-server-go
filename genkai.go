@@ -1,6 +1,7 @@
 package genkai
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
@@ -16,6 +17,7 @@ type Kai struct {
 type Context struct {
 	Session string
 	Request *RequestPayload
+	Ctx     context.Context
 }
 
 type I = interface{}
