@@ -1,4 +1,4 @@
-module genkai
+module github.com/genkai-net/genkai-server-go
 
 go 1.14
 
