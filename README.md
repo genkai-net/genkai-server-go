@@ -76,10 +76,10 @@ Since most go functions comes with errors alongside the return value, Genkai sup
 Here are some various possible errors that would arise from using this function.
 ```
 let app = GenkaiClient("http://localhost:9302");
-let token = await app.rogin("myuser", "wrong_secret");
+let token = await app.login("myuser", "wrong_secret");
 >> Throws: Error: Invalid credentials
 
-let token = await app.rogin("myuser");
+let token = await app.login("myuser");
 >> Throws: Error: Function accepts 2 params <string, string>, provided 1
 
 let token = await app.rogin("myuser", "secret");
