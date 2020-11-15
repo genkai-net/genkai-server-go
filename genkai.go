@@ -138,7 +138,7 @@ func (k *Kai) Execute(ctx *Context) (*ResultPayload, error) {
 	for i, param := range ctx.Request.Parameters {
 		val := reflect.ValueOf(param)
 
-		if !val.IsNil() && val.Type().Kind() == reflect.Slice {
+		if !val.IsValid() && val.Type().Kind() == reflect.Slice {
 			var err error
 			val, err = k.coerceSliceType(val)
 			if err != nil {
@@ -147,8 +147,7 @@ func (k *Kai) Execute(ctx *Context) (*ResultPayload, error) {
 		}
 
 		in[i] = val
-
-		if mainFn_v.Type().In(i).String() != in[i].Type().String() {
+		if mainFn_v.Type().In(i).String() != val.Type().String() {
 			return nil, fmt.Errorf("Parameter '%v' mismatch: supplied '<%v:%v>', expected '<%v>'",
 				i,
 				in[i].Interface(),
