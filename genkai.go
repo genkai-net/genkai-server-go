@@ -138,7 +138,7 @@ func (k *Kai) Execute(ctx *Context) (*ResultPayload, error) {
 	for i, param := range ctx.Request.Parameters {
 		val := reflect.ValueOf(param)
 
-		if val.Type().Kind() == reflect.Slice {
+		if !val.IsNil() && val.Type().Kind() == reflect.Slice {
 			var err error
 			val, err = k.coerceSliceType(val)
 			if err != nil {
